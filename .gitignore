@@ -32,8 +32,8 @@ guide/profile_decoder_flame.svg
 guide_py
 
 # data
-data-*
-data_*
+#data-*
+#data_*
 docs-private/
 data/
 *debug.png

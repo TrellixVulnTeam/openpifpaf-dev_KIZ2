@@ -68,8 +68,8 @@ class ApolloToCoco:
 
         assert os.path.isdir(dir_dataset), 'dataset directory not found'
         self.dir_dataset = dir_dataset
-        # self.dir_mask = os.path.join(dir_dataset, 'ignore_mask')
-        # assert os.path.isdir(self.dir_mask), 'crowd annotations not found: ' + self.dir_mask
+        self.dir_mask = os.path.join(dir_dataset, 'ignore_mask')
+        assert os.path.isdir(self.dir_mask), 'crowd annotations not found: ' + self.dir_mask
 
         self.dir_out_im = os.path.join(dir_out, 'images')
         self.dir_out_ann = os.path.join(dir_out, 'annotations')
@@ -129,8 +129,8 @@ class ApolloToCoco:
                     copyfile(im_path, dst)
 
                 # Add crowd annotations
-                # mask_path = os.path.join(self.dir_mask, im_name + '.jpg')
-                # self._process_mask(mask_path, im_id)
+                mask_path = os.path.join(self.dir_mask, im_name + '.jpg')
+                self._process_mask(mask_path, im_id)
 
                 # Count
                 if (cnt_images % 1000) == 0:

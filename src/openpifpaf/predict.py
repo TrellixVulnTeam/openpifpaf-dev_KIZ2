@@ -103,6 +103,7 @@ def main():
     predictor = Predictor(
         visualize_image=(args.show or args.image_output is not None),
         visualize_processed_image=args.debug,
+        checkpoint=args.checkpoint
     )
     for pred, _, meta in predictor.images(args.images):
         # json output

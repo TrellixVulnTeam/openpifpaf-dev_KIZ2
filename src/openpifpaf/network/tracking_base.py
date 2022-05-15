@@ -1,6 +1,6 @@
 from openpifpaf.network.basenetworks import BaseNetwork
 from openpifpaf.network.running_cache import RunningCache
-from openpifpaf.signal import Signal
+from openpifpaf.signal_renamed import Signal
 
 
 class TrackingBase(BaseNetwork):

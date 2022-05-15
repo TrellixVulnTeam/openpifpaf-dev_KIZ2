@@ -1,4 +1,4 @@
-from openpifpaf.signal import Signal
+from openpifpaf.signal_renamed import Signal
 
 
 class LoaderWithReset:

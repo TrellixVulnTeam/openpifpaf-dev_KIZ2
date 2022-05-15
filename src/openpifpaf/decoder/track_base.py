@@ -6,7 +6,7 @@ import numpy as np
 from openpifpaf import annotation
 from openpifpaf.decoder.decoder import Decoder
 from openpifpaf.decoder.track_annotation import TrackAnnotation
-from openpifpaf.signal import Signal
+from openpifpaf.signal_renamed import Signal
 
 
 class TrackBase(Decoder):

@@ -12,7 +12,7 @@ cpp_extension.register_ops()
 from .annotation import Annotation, AnnotationDet
 from .configurable import Configurable
 from .predictor import Predictor
-from .signal import Signal
+from .signal_renamed import Signal
 from . import datasets
 from . import decoder
 from . import encoder

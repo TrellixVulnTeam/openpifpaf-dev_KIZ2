@@ -21,7 +21,7 @@ def default_output_file(args):
         base_name, _, __ = os.path.basename(args.checkpoint).partition('-')
 
     now = datetime.datetime.now().strftime('%y%m%d-%H%M%S')
-    out = 'outputs/{}-{}-{}'.format(base_name, now, args.dataset)
+    out = 'outputs/bizimki_{}-{}-{}'.format(base_name, now, args.dataset)
 
     # Slurm jobs might be stuck in the job queue and then started at exactly the
     # same time. Therefore we disambiguate with the Slurm job id.

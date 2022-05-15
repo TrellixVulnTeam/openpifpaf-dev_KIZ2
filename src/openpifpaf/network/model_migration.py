@@ -1,7 +1,7 @@
 from openpifpaf.network import tracking_heads
 from openpifpaf.network.nets import model_defaults
 from openpifpaf.network.tracking_base import TrackingBase
-from openpifpaf.signal import Signal
+from openpifpaf.signal_renamed import Signal
 
 MODEL_MIGRATION = set()
 

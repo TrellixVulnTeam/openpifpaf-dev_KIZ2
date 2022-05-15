@@ -29,11 +29,11 @@ class LaneKp(DataModule):
     Adapted from the standard CocoKp class to work as external plugin
     """
 
-    train_annotations = 'data-lane/annotations/lane_keypoints_train.json'
-    val_annotations = 'data-lane/annotations/lane_keypoints_val.json'
+    train_annotations = '/home/xena/openpifpaf-dev/src/openpifpaf/plugins/openpifpaf-lane/data-temiz/annotations/pifpaf-lane-keypoints2-train.json'
+    val_annotations = '/home/xena/openpifpaf-dev/src/openpifpaf/plugins/openpifpaf-lane/data-temiz/annotations/pifpaf-lane-keypoints2-val.json'
     eval_annotations = val_annotations
-    train_image_dir = 'data-lane/images/train/'
-    val_image_dir = 'data-lane/images/val/'
+    train_image_dir = '/home/xena/openpifpaf-dev/src/openpifpaf/plugins/openpifpaf-lane/data-temiz/images/train'
+    val_image_dir = '/home/xena/openpifpaf-dev/src/openpifpaf/plugins/openpifpaf-lane/data-temiz/images/val'
     eval_image_dir = val_image_dir
 
     n_images = None
@@ -55,16 +55,27 @@ class LaneKp(DataModule):
     def __init__(self):
         super().__init__()
 
+        # cif = headmeta.Cif('cif', 'lane',
+        #                    keypoints=LANE_KEYPOINTS,
+        #                    sigmas=LANE_SIGMAS,
+        #                    pose=LANE_POSE,
+        #                    draw_skeleton=LANE_SKELETON,
+        #                    score_weights=LANE_SCORE_WEIGHTS)
+        # caf = headmeta.Caf('caf', 'lane',
+        #                    keypoints=LANE_KEYPOINTS,
+        #                    sigmas=LANE_SIGMAS,
+        #                    pose=LANE_POSE,
+        #                    skeleton=LANE_SKELETON)
         cif = headmeta.Cif('cif', 'lane',
                            keypoints=LANE_KEYPOINTS,
                            sigmas=LANE_SIGMAS,
-                           pose=LANE_POSE,
+                           pose=None,
                            draw_skeleton=LANE_SKELETON,
-                           score_weights=LANE_SCORE_WEIGHTS)
+                           score_weights=None)
         caf = headmeta.Caf('caf', 'lane',
                            keypoints=LANE_KEYPOINTS,
                            sigmas=LANE_SIGMAS,
-                           pose=LANE_POSE,
+                           pose=None,
                            skeleton=LANE_SKELETON)
 
         cif.upsample_stride = self.upsample_stride
@@ -212,8 +223,8 @@ class LaneKp(DataModule):
             image_dir=self.train_image_dir,
             ann_file=self.train_annotations,
             preprocess=self._preprocess(),
-            annotation_filter=True,
-            min_kp_anns=self.min_kp_anns,
+            annotation_filter=False,
+            min_kp_anns=False,
             category_ids=[1],
         )
         return torch.utils.data.DataLoader(
@@ -226,8 +237,8 @@ class LaneKp(DataModule):
             image_dir=self.val_image_dir,
             ann_file=self.val_annotations,
             preprocess=self._preprocess(),
-            annotation_filter=True,
-            min_kp_anns=self.min_kp_anns,
+            annotation_filter=False,
+            min_kp_anns=False,
             category_ids=[1],
         )
         return torch.utils.data.DataLoader(
